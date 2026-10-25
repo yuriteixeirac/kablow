@@ -1,13 +1,4 @@
-type Category = "hardware" | "perifericos" | "computadores" | "gamer";
-
-interface Product {
-	attributes: { title: string };
-}
-
-interface ProductList {
-	meta: { total_pages_count: number };
-	data: Product[];
-}
+import type { Product, ProductList, Category } from './types';
 
 async function fetchProducts(category: Category) {
 	let response = await fetch(`https://servicespub.prod.api.aws.grupokabum.com.br/catalog/v2/products-by-category/${category}?page_number=1&page_size=100&facet_filters=&sort=most_searched&is_prime=false&payload_data=products_category_filters&include=gift`);
